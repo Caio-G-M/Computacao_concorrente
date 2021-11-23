@@ -72,10 +72,12 @@ int main(void){
         printf("--ERRO: pthread_join() \n"); exit(-1); 
     }
 
-    /*Loop para printar o vetor. depois das modificações. Pode ser descomentado.*/
-    /*for(int i = 0; i < TAM_VETOR ; i++){
-        printf("%ld\n", vetor[i]);
-    }*/
+    /*Loop para a verificação automática de valores do vetor modificado.*/
+    for(int i = 0; i < TAM_VETOR ; i++){
+        if (vetor[i] != (i+1)*(i+1)) {
+            printf("--Erro: vetor modificado de forma equivocada\n");
+        }
+    }
 
     pthread_exit(NULL);
 }
